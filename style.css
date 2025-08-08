@@ -2,4 +2,65 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: 2px solid black;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+.frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 1000px;
+    height: 500px;
+}
+.topWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.picture {
+    width: 200px;
+    height: 200px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.image {
+
+}
+
+.circle {
+    width: 8px;
+    height: 8px;
+    border: none;
+    background-color: grey;
+    border-radius: 5px;
+}
+
+.activeCircle {
+    background-color: green;
+
+}
+
+.circleWrapper {
+    display: flex;
+    gap: 5px;
+
 }
