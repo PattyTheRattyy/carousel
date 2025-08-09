@@ -27,9 +27,30 @@ function changeCircle(next) {
   }
 }
 
+function changeImg(next) {
+  const oldImg = document.querySelector(`.picture :nth-child(${currImg + 1})`);
+  console.log(oldImg);
+  oldImg.classList.add("hideImg");
+
+  if (next) {
+    const nextImg = currImg + 1;
+    const activeImg = document.querySelector(
+      `.picture :nth-child(${nextImg + 1})`
+    );
+    activeImg.classList.remove("hideImg");
+  } else {
+    const lastImg = currImg - 1;
+    const activeImg = document.querySelector(
+      `.picture :nth-child(${lastImg + 1})`
+    );
+    activeImg.classList.remove("hideImg");
+  }
+}
+
 function nextImg() {
   if (currImg < maxIndex) {
     changeCircle(true);
+    changeImg(true);
     currImg += 1;
     displayImg();
   }
@@ -38,6 +59,7 @@ function nextImg() {
 function prevImg() {
   if (currImg >= 1) {
     changeCircle(false);
+    changeImg(false);
     currImg -= 1;
     displayImg();
   }
@@ -50,7 +72,6 @@ function getCurrImg() {
 const image = document.querySelector(".picture");
 function displayImg() {
   const imgToDisplay = getCurrImg();
-  image.textContent = currImg;
 }
 
 // query selectors
