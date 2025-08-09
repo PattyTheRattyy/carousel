@@ -47,6 +47,32 @@ function changeImg(next) {
   }
 }
 
+function changeImgExact(index) {
+  // hide old image
+  const oldImg = document.querySelector(`.picture :nth-child(${currImg + 1})`);
+  oldImg.classList.add("hideImg");
+
+  // remove old circle
+  const oldCircle = document.querySelector(
+    `.circleWrapper :nth-child(${currImg + 1})`
+  );
+  console.log(oldCircle);
+  oldCircle.classList.remove("activeCircle");
+
+  //   show new image
+  const activeImg = document.querySelector(`.picture :nth-child(${index + 1})`);
+  activeImg.classList.remove("hideImg");
+
+  //   show new circle
+  const activeCircle = document.querySelector(
+    `.circleWrapper :nth-child(${index + 1})`
+  );
+  activeCircle.classList.add("activeCircle");
+
+  //   update current image
+  currImg = index;
+}
+
 function nextImg() {
   if (currImg < maxIndex) {
     changeCircle(true);
@@ -85,10 +111,19 @@ nextBtn.addEventListener("click", () => {
   nextImg();
 });
 
+const circles = document.querySelectorAll(".circle");
+for (let i = 0; i < circles.length; i++) {
+  circles[i].addEventListener("click", () => {
+    changeImgExact(i);
+    changeCircleExact(i);
+  });
+}
+
 function initial() {
   const firstCircle = document.querySelector(".circle");
   firstCircle.classList.add("activeCircle");
   displayImg();
+  setInterval(nextImg, 5000);
 }
 
 initial();
